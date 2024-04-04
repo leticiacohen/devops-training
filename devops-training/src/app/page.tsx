@@ -3,13 +3,14 @@ import { useEffect, useState } from "react";
 
 
 export default function Home() {
+  const baseUrl = process.env.BASE_URL;
   const [number1, setNumber1] = useState(0);
   const [number2, setNumber2] = useState(0);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
     const getSumResponse = async () => {
-      const response = await fetch(`http://127.0.0.1:8000/sum/${number1}/${number2}`);
+      const response = await fetch(`${baseUrl}/sum/${number1}/${number2}`);
       const responseResult = await response.json();
       setTotal(responseResult);
     }
